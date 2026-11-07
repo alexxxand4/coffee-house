@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COFFEE HOUSE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>☕ COFFEE HOUSE</h1>
+
+        <nav>
+            <a href="#home">Главная</a>
+            <a href="#menu">Меню</a>
+            <a href="#about">О нас</a>
+            <a href="#contacts">Контакты</a>
+            <a href="#cart">Корзина</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <section id="home">
+            <h2>Идеальный кофе начинается здесь</h2>
+
+            <p>
+                Почувствуй аромат настоящего кофе.
+                Наслаждайся каждым моментом вместе с нами.
+            </p>
+
+            <a href="#menu" class="button">Посмотреть меню</a>
+        </section>
+
+        <!-- МЕНЮ -->
+        <section id="menu">
+            <h2>Наше меню</h2>
+
+            <div class="products">
+
+                <div class="product">
+                    <img
+                        src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600"
+                        alt="Капучино"
+                    >
+
+                    <h3>Капучино</h3>
+                    <p>Нежный кофе с молочной пенкой</p>
+                    <strong>250 ₽</strong>
+
+                    <button
+                        class="add-to-cart"
+                        type="button"
+                        onclick="addToCart('Капучино', 250)"
+                    >
+                        Добавить в корзину
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img
+                        src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600"
+                        alt="Латте"
+                    >
+
+                    <h3>Латте</h3>
+                    <p>Мягкий вкус и много молока</p>
+                    <strong>280 ₽</strong>
+
+                    <button
+                        class="add-to-cart"
+                        type="button"
+                        onclick="addToCart('Латте', 280)"
+                    >
+                        Добавить в корзину
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img
+                        src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600"
+                        alt="Эспрессо"
+                    >
+
+                    <h3>Эспрессо</h3>
+                    <p>Крепкий и насыщенный кофе</p>
+                    <strong>180 ₽</strong>
+
+                    <button
+                        class="add-to-cart"
+                        type="button"
+                        onclick="addToCart('Эспрессо', 180)"
+                    >
+                        Добавить в корзину
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- КОРЗИНА И ОФОРМЛЕНИЕ ЗАКАЗА -->
+        <section id="cart">
+
+            <h2>Моя корзина</h2>
+
+            <div id="cart-items">
+                <p>Ваша корзина пока пуста.</p>
+            </div>
+
+            <div class="cart-total">
+                <h3>Итого: <span id="cart-total">0</span> ₽</h3>
+            </div>
+
+            <!-- ФОРМА ЗАКАЗА -->
+            <div class="checkout">
+
+                <h2>Оформление заказа</h2>
+
+                <form id="checkout-form" onsubmit="checkoutOrder(event)">
+
+                    <label for="customer-name">Ваше имя</label>
+
+                    <input
+                        type="text"
+                        id="customer-name"
+                        placeholder="Введите ваше имя"
+                        required
+                    >
+
+                    <label for="customer-phone">Номер телефона</label>
+
+                    <input
+                        type="tel"
+                        id="customer-phone"
+                        placeholder="+7 (999) 123-45-67"
+                        required
+                    >
+
+                    <label for="customer-comment">
+                        Комментарий к заказу
+                    </label>
+
+                    <textarea
+                        id="customer-comment"
+                        placeholder="Например: без сахара"
+                        rows="4"
+                    ></textarea>
+
+                    <button type="submit" class="checkout-button">
+                        Оформить заказ
+                    </button>
+
+                </form>
+
+                <!-- ПОДТВЕРЖДЕНИЕ ЗАКАЗА -->
+                <div id="order-success" class="order-success" hidden>
+
+                    <div class="success-icon">✓</div>
+
+                    <h2>Спасибо за заказ!</h2>
+
+                    <p class="success-subtitle">
+                        Ваш заказ успешно оформлен.
+                    </p>
+
+                    <div class="success-details">
+                        <p id="success-name"></p>
+                        <p id="success-products"></p>
+                        <p id="success-phone"></p>
+                        <p id="success-comment"></p>
+
+                        <div class="success-total">
+                            Итого:
+                            <span id="success-total">0</span> ₽
+                        </div>
+                    </div>
+
+                    <p class="success-thanks">
+                        Будем рады видеть вас снова в COFFEE HOUSE!
+                    </p>
+
+                    <button
+                        type="button"
+                        class="back-to-menu"
+                        onclick="startNewOrder()"
+                    >
+                        Вернуться к меню
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- О НАС -->
+        <section id="about">
+            <h2>О нашей кофейне</h2>
+
+            <p>
+                Coffee House — место, где каждый гость
+                может насладиться вкусным кофе и уютом.
+            </p>
+        </section>
+
+        <!-- КОНТАКТЫ -->
+        <section id="contacts">
+            <h2>Контакты</h2>
+
+            <p>Ждём тебя каждый день!</p>
+            <p>Время работы: 08:00 — 22:00</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Coffee House</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
